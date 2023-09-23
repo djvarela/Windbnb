@@ -1,43 +1,30 @@
 import { useState } from "react";
-
+import { useForm } from "react-hook-form";
 import { ListItem } from "./assets/components/ListItem";
 
 function App() {
+
   const [searchCity, setSearchCity] = useState("");
   const [guests, setGuests] = useState("");
-
-  let newSearch = '""';
-  let newGuest = '';
-
-  const searchingCity = ({ target }) => {
-    setSearchCity(target.value.toLowerCase().trim());
-  };
-
-  const onGuest = ({target})=>{
- 
-    setGuests(target.value)
-  }
-
-  const onSearchSubmit = (e) => {
-    e.preventDefault();
+  const {register,handleSubmit} = useForm()
 
 
+  const onSearchSubmit = handleSubmit((e)=>{
+    setSearchCity(e.city)
+    setGuests(e.number)
+  })
 
-    newSearch =searchCity    
-    newGuest = guests
 
-    return {newSearch,newGuest}
-  };
 
   return (
     <>
       <header>
         <nav>
           <ul>
-            <form onSubmit={onSearchSubmit}>
-              <input type="text" onChange={searchingCity} />
-              <input type="number" onChange={onGuest} />
-              <button type="submit">Search</button>
+            <form onSubmit={onSearchSubmit} autoComplete="off">
+              <input type="text" {...register('city')} />
+              <input type="number" {...register('number')} placeholder='Add guests'/>
+              <button type="submit">🔍</button>
             </form>
           </ul>
         </nav>
@@ -46,9 +33,9 @@ function App() {
       <main>
         <h2>Stays in finlandia</h2>
         <h3>12 days</h3>
-        <ul>
-          <ListItem city={newSearch} guests={newGuest} />
-        </ul>
+          <ul>
+            <ListItem city={searchCity}  guests={guests} />
+          </ul>
       </main>
     </>
   );

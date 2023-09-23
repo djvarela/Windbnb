@@ -1,5 +1,5 @@
 import {data} from '../../data'
-export const ListItem = ( {city, guests} ) => {
+export const ListItem = ( {city = '', guests = ''} ) => {
 
   return (
     <>
@@ -22,8 +22,7 @@ export const ListItem = ( {city, guests} ) => {
                   <p className="superHost">Super Host</p>
                 ) : null}
                 <p>{info.type}</p>
-                <p>{info.maxguests}</p>
-                <p>{info.rating}</p>
+                <p>⭐{info.rating}</p>
                 
               </span>
               <h2>{info.title}</h2>
