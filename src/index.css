@@ -1,9 +1,21 @@
+*{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  box-sizing: border-box;
+
+}
+#root{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: flex-start;
+}
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  padding: 1em;
 }
 
 h1 {
@@ -14,13 +26,14 @@ h1 {
 header nav ul {
   display: flex;
   gap: 1em;
+  justify-content: flex-end;
 }
 
 header nav ul form {
   border: 1px solid #222;
   border-radius: 10px;
   padding: 0.5em;
-
+  display: flex;
   background-color: #ffffff;
 }
 header nav ul input {
@@ -90,4 +103,36 @@ ul li {
   background-color: #eee;
   border-radius: 10px;
   font-weight: bolder;
+}
+
+
+.modal-search{
+  border: 1px solid red;
+  display: flex;
+  width: 100%;
+  gap:1em;
+  transform: .35s;
+  opacity: 0;
+}
+
+.modal-search-active{
+  opacity: 1;
+}
+
+.modal-search .location,
+.guest-modal{
+  width: 50%;
+}
+
+
+header nav ul .modal-forms-active{
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+header nav ul form input{
+  width: 100%;
+ 
 }

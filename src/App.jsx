@@ -28,6 +28,22 @@ function App() {
             </form>
           </ul>
         </nav>
+        <div className="modal-search">
+          <div className="location">
+            <ul>
+                <li>Test</li>
+                <li>Test</li>
+                <li>Test</li>
+            </ul>
+          </div>
+
+          <div className="guest-modal">
+            <ul>
+              <li>Test</li>
+            </ul>
+          </div>
+
+        </div>
       </header>
 
       <main>
