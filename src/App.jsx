@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ListItem } from "./assets/components/ListItem";
+import { isActive } from "./utils";
 
 function App() {
 
@@ -8,12 +9,23 @@ function App() {
   const [guests, setGuests] = useState("");
   const {register,handleSubmit} = useForm()
 
+ 
 
   const onSearchSubmit = handleSubmit((e)=>{
     setSearchCity(e.city)
     setGuests(e.number)
-  })
 
+    let citys = []
+    const local = JSON.parse(localStorage.getItem('city'))
+    citys.push(e.city);
+
+    localStorage.setItem('city',JSON.stringify(citys))
+  
+    
+    console.log({local})
+    
+
+  })
 
 
   return (
@@ -21,9 +33,15 @@ function App() {
       <header>
         <nav>
           <ul>
-            <form onSubmit={onSearchSubmit} autoComplete="off">
-              <input type="text" {...register('city')} />
-              <input type="number" {...register('number')} placeholder='Add guests'/>
+            <form onSubmit={onSearchSubmit} className="forms-modal" autoComplete="off">
+              <input type="text" {...register('city')} 
+                onClick={isActive}
+
+              
+              />
+              <input type="number" {...register('number')}
+                onClick={isActive}
+              placeholder='Add guests'/>
               <button type="submit">🔍</button>
             </form>
           </ul>

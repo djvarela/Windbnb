@@ -9,6 +9,7 @@
   height: 100vh;
   justify-content: flex-start;
 }
+
 body {
   margin: 0;
   display: flex;
@@ -16,6 +17,13 @@ body {
   min-width: 320px;
   min-height: 100vh;
   padding: 1em;
+  transition: .25s all;
+}
+
+.main-false{
+
+ filter:opacity(0.5);
+ filter: contrast(40%)
 }
 
 h1 {
@@ -27,6 +35,7 @@ header nav ul {
   display: flex;
   gap: 1em;
   justify-content: flex-end;
+  position: relative;
 }
 
 header nav ul form {
@@ -35,6 +44,7 @@ header nav ul form {
   padding: 0.5em;
   display: flex;
   background-color: #ffffff;
+  transition: .45s all;
 }
 header nav ul input {
   width: 8em;
@@ -66,7 +76,6 @@ main ul {
   justify-content: start;
   align-items: stretch;
   align-content: center;
-
   padding: 0;
 }
 ul li {
@@ -107,21 +116,31 @@ ul li {
 
 
 .modal-search{
-  border: 1px solid red;
   display: flex;
   width: 100%;
+  background-color: #ffffff;
   gap:1em;
-  transform: .35s;
-  opacity: 0;
+  transition: .15s all;
+  opacity:0;
+  z-index: -100;
+  position: absolute;
+  transform: translateY(-15%);
+  padding: 1em;
+  left: 0;
+  right: 0;
 }
 
 .modal-search-active{
   opacity: 1;
+  border: 1px solid rgb(0, 0, 0);
+  z-index: 1;;
+  transform: translateY(0%);
 }
 
 .modal-search .location,
 .guest-modal{
   width: 50%;
+
 }
 
 
