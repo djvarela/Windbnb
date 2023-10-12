@@ -2,22 +2,27 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ListItem } from "./assets/components/ListItem";
 import { isActive } from "./utils";
+import map from './assets/img/map.svg';
+import cleanHistory from "./utils/cleanHistory";
 
 function App() {
+
   const [searchCity, setSearchCity] = useState("");
   const [guests, setGuests] = useState("");
   const { register, handleSubmit } = useForm();
-
+  
+  
+  const local = JSON.parse(localStorage.getItem("city"))  || []; //tomar
+  const [history, setHistory] = useState(local);
+ 
   const onSearchSubmit = handleSubmit((e) => {
     setSearchCity(e.city);
     setGuests(e.number);
-
-    const local = JSON.parse(localStorage.getItem("city"))  || []; //tomar
- 
     local.push(e.city);
-   
     localStorage.setItem("city", JSON.stringify(local)); // enviar
-    console.log(local)
+
+    setHistory(local)
+    console.log({history})
   });
 
   return (
@@ -43,11 +48,26 @@ function App() {
         </nav>
         <div className="modal-search">
           <div className="location">
+              <button
+              onClick={isActive}
+              >
+                X</button>
             <ul>
-              <li>Test</li>
-              <li>Test</li>
-              <li>Test</li>
+              {
+           
+             history.map((li)=>{
+              let uuid = self.crypto.randomUUID();
+               return (<li key={uuid}>
+                <img src={map} alt="" />
+                {li}</li>)
+                })
+              }
             </ul>
+            <button
+              onClick={()=>{cleanHistory(setHistory, setSearchCity, isActive)
+              
+              }}
+            >Limpiar Historial</button>
           </div>
 
           <div className="guest-modal">
